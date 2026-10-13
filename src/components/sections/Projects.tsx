@@ -40,7 +40,7 @@ const Projects = () => {
               </Dialog>
               <h3 className="text-xl font-bold mb-3 text-foreground text-center">The Divine Protocol</h3>
             </div>
-            <p className="text-muted-foreground mb-4">How God Used Doctors, Medicine, and My Own Body to Heal Me. Expected release: October 2025.</p>
+            <p className="text-muted-foreground mb-4">How God Used Doctors, Medicine, and My Own Body to Heal Me.</p>
             <div className="w-full bg-muted rounded-full h-2.5">
               <div className="bg-primary h-2.5 rounded-full" style={{width: "15%"}}></div>
             </div>
@@ -77,7 +77,7 @@ const Projects = () => {
               </Dialog>
               <h3 className="text-xl font-bold text-foreground text-center">Bible Heroes and Heroines</h3>
             </div>
-            <p className="text-muted-foreground mb-4">Bible Heroes and Heroines as told by Maggie. Expected release: November 2025.</p>
+            <p className="text-muted-foreground mb-4">Bible Heroes and Heroines as told by Maggie.</p>
             <div className="w-full bg-muted rounded-full h-2.5">
               <div className="bg-accent h-2.5 rounded-full" style={{width: "10%"}}></div>
             </div>
