@@ -202,7 +202,7 @@ export const booksData: BookData[] = [
     reviewCount: 15,
     amazonLink: "https://a.co/d/a1KplpW",
     kindleLink: "https://a.co/d/a1KplpW",
-    isNew: true,
+    isNew: false,
     samplePages: [
       {
         src: "/lovable-uploads/6eafedb9-930e-4688-8ed6-23f6eea36ca1.png",
@@ -346,7 +346,7 @@ export const booksData: BookData[] = [
     reviewCount: 10,
     amazonLink: "https://a.co/d/7Eqcogw",
     kindleLink: "https://a.co/d/7Eqcogw",
-    isNew: true,
+    isNew: false,
     samplePages: [
       { src: "/images/thanksgiving-sample-1.png", pageNumber: 1, alt: "The First Thanksgiving - Title Page" },
       { src: "/images/thanksgiving-sample-2.png", pageNumber: 2, alt: "The First Thanksgiving - Copyright Page" },
@@ -364,7 +364,7 @@ export const booksData: BookData[] = [
     reviewCount: 1,
     amazonLink: "https://a.co/d/6Xkd4Ut",
     kindleLink: "https://www.amazon.com/dp/B0G3M8FXKH",
-    isNew: true,
+    isNew: false,
     samplePages: [
       {
         src: "/images/christmas-sample-1.png",
@@ -403,7 +403,7 @@ export const booksData: BookData[] = [
     amazonLink: "https://a.co/d/03abDACO",
     kindleLink: "",
     appleBooksLink: "https://books.apple.com/us/book/id6772001398",
-    isNew: true,
+    isNew: false,
     samplePages: [
       { src: "/images/ai-adventure-sample-1.png", pageNumber: 1, alt: "AI Adventures with Maggie - Title Page" },
       { src: "/images/ai-adventure-sample-2.png", pageNumber: 2, alt: "AI Adventures with Maggie - Copyright Page" },
@@ -468,7 +468,7 @@ export const booksData: BookData[] = [
     amazonLink: "https://www.amazon.com/Independence-Day-told-Maggie-Matteo/dp/B0H3L5NVL7",
     kindleLink: "",
     appleBooksLink: "https://books.apple.com/us/book/id6775633849",
-    isNew: true,
+    isNew: false,
     samplePages: []
   },
   {
@@ -481,7 +481,7 @@ export const booksData: BookData[] = [
     reviewCount: 0,
     amazonLink: "",
     kindleLink: "",
-    isNew: true,
+    isNew: false,
     isFree: true,
     pdfDownloadUrl: "./books/easter-story.pdf",
     samplePages: []
@@ -495,7 +495,7 @@ export const booksData: BookData[] = [
     reviewCount: 0,
     amazonLink: "",
     kindleLink: "",
-    isNew: true,
+    isNew: false,
     isFree: true,
     samplePages: []
   }
