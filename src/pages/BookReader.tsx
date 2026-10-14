@@ -603,37 +603,54 @@ export default function BookReader() {
 
 
   const fetchOneChunk = async (text: string): Promise<string | null> => {
-    try {
-      const resp = await fetch(`${supabaseUrl}/functions/v1/azure-tts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: supabaseAnonKey,
-          Authorization: `Bearer ${supabaseAnonKey}`,
-        },
-        body: JSON.stringify({ text, voice: "en-US-SaraNeural" }),
-      });
-      const ct = resp.headers.get("Content-Type") || "";
-      if (!resp.ok || ct.includes("application/json")) return null;
-      const blob = await resp.blob();
-      return URL.createObjectURL(blob);
-    } catch {
-      return null;
+    // Retry politely when the voice service is busy (429/5xx), with backoff.
+    for (let attempt = 0; attempt < 4; attempt++) {
+      try {
+        const resp = await fetch(`${supabaseUrl}/functions/v1/azure-tts`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: supabaseAnonKey,
+            Authorization: `Bearer ${supabaseAnonKey}`,
+          },
+          body: JSON.stringify({ text, voice: "en-US-SaraNeural" }),
+        });
+        const ct = resp.headers.get("Content-Type") || "";
+        if (resp.ok && !ct.includes("application/json")) {
+          return URL.createObjectURL(await resp.blob());
+        }
+        if (resp.status !== 429 && resp.status < 500) return null;
+        const retryAfter = Number(resp.headers.get("Retry-After")) || 0;
+        const wait = retryAfter > 0 ? retryAfter * 1000 : 1000 * 2 ** attempt + Math.random() * 400;
+        await new Promise((r) => setTimeout(r, wait));
+      } catch {
+        return null;
+      }
     }
+    return null;
   };
 
-  // Kick off parallel chunk fetches; cache promises so prefetch + click share work.
+  // Fetch chunks one at a time (shared queue) so we never burst the voice service.
+  const ttsQueueRef = useRef<Promise<unknown>>(Promise.resolve());
+  const queueChunk = (text: string): Promise<string | null> => {
+    const next = ttsQueueRef.current.then(() => fetchOneChunk(text));
+    ttsQueueRef.current = next.catch(() => null);
+    return next;
+  };
+
+  // Cache promises so prefetch + click share work.
   const fetchAudioChunks = (cacheKey: string, text: string): Promise<string | null>[] => {
     const cached = audioCacheRef.current.get(cacheKey);
     if (cached) return cached.map((u) => Promise.resolve(u));
     const inflight = inflightAudioRef.current.get(cacheKey);
     if (inflight) return inflight;
     const chunks = splitForTTS(text);
-    const promises = chunks.map((c) => fetchOneChunk(c));
+    const promises = chunks.map((c) => queueChunk(c));
     inflightAudioRef.current.set(cacheKey, promises);
     Promise.all(promises).then((urls) => {
-      audioCacheRef.current.set(cacheKey, urls);
       inflightAudioRef.current.delete(cacheKey);
+      // Only cache complete results so a busy moment doesn't stick.
+      if (urls.every(Boolean)) audioCacheRef.current.set(cacheKey, urls);
     });
     return promises;
   };
