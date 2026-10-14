@@ -619,7 +619,12 @@ export default function BookReader() {
         if (resp.ok && !ct.includes("application/json")) {
           return URL.createObjectURL(await resp.blob());
         }
-        if (resp.status !== 429 && resp.status < 500) return null;
+        let busy = resp.status === 429 || resp.status >= 500;
+        if (resp.ok && ct.includes("application/json")) {
+          const j = await resp.json().catch(() => ({}));
+          busy = !!j?.retryable;
+        }
+        if (!busy) return null;
         const retryAfter = Number(resp.headers.get("Retry-After")) || 0;
         const wait = retryAfter > 0 ? retryAfter * 1000 : 1000 * 2 ** attempt + Math.random() * 400;
         await new Promise((r) => setTimeout(r, wait));

@@ -55,7 +55,8 @@ Deno.serve(async (req) => {
             : `Azure TTS failed: ${resp.status} ${errText}`,
           retryable: throttled,
         }),
-        { status: throttled ? 429 : 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+        // Busy is an expected, retryable state: answer 200 + JSON so callers back off without an error.
+        { status: throttled ? 200 : 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
       );
     }
 
