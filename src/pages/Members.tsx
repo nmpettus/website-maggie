@@ -654,6 +654,17 @@ export default function Members() {
           </AlertDialogContent>
         </AlertDialog>
 
+        <Dialog open={!!fullCover} onOpenChange={(o) => !o && setFullCover(null)}>
+          <DialogContent className="max-w-4xl w-[95vw] max-h-[95vh] p-2 flex flex-col items-center">
+            <DialogHeader className="sr-only">
+              <DialogTitle>{fullCover?.title}</DialogTitle>
+            </DialogHeader>
+            {fullCover && (
+              <img src={fullCover.url} alt={fullCover.title} className="max-w-full max-h-[90vh] object-contain rounded-lg" />
+            )}
+          </DialogContent>
+        </Dialog>
+
         <Dialog
           open={!!readingPdf}
           onOpenChange={(open) => {
