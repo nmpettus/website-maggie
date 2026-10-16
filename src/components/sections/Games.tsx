@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import MaggiesBibleAdventure from "@/components/games/MaggiesBibleAdventure";
 import { Gamepad2, Compass, Sparkles, ArrowRight } from "lucide-react";
