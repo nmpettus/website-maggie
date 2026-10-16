@@ -1,9 +1,22 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import MaggiesBibleAdventure from "@/components/games/MaggiesBibleAdventure";
-import { Gamepad2, Compass, Sparkles, ArrowRight } from "lucide-react";
+import { Gamepad2, Compass, Sparkles, ArrowRight, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { useAuth } from "@/hooks/useAuth";
+import { useStripeCheckout } from "@/hooks/useStripeCheckout";
 
 const Games = () => {
+  const { user } = useAuth();
+  const { openCheckout, isOpen, closeCheckout, checkoutElement } = useStripeCheckout();
+  const buy = () =>
+    openCheckout({
+      priceId: "pilgrim_game_download",
+      customerEmail: user?.email ?? undefined,
+      userId: user?.id,
+      returnUrl: `${window.location.origin}${window.location.pathname}#/pilgrim-game?purchased=1&session_id={CHECKOUT_SESSION_ID}`,
+    });
   return (
     <section id="games" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -66,11 +79,30 @@ const Games = () => {
             </div>
           </div>
         </a>
-        <div className="-mt-8 mb-12 text-center">
-          <Link to="/pilgrim-game" className="text-lg font-bold text-primary underline">
-            See game details, how to play & buy the download ($2.99)
-          </Link>
+        <div className="-mt-6 mb-12 flex flex-col items-center gap-3 rounded-3xl bg-card p-6 text-center shadow-lg sm:flex-row sm:justify-between sm:text-left">
+          <div>
+            <h3 className="text-xl font-bold text-foreground">Download the full game — $2.99</h3>
+            <p className="text-foreground/80">
+              Keep all 13 voiced chapters to play any time.{" "}
+              <Link to="/pilgrim-game" className="font-semibold text-primary underline">Game details & how to play</Link>
+            </p>
+          </div>
+          {user ? (
+            <Button size="lg" className="rounded-full text-lg" onClick={buy}>
+              <Download className="mr-2 h-5 w-5" /> Buy & Download — $2.99
+            </Button>
+          ) : (
+            <Link to="/auth">
+              <Button size="lg" className="rounded-full text-lg"><Download className="mr-2 h-5 w-5" /> Sign in to buy — $2.99</Button>
+            </Link>
+          )}
         </div>
+        <Dialog open={isOpen} onOpenChange={(o) => !o && closeCheckout()}>
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogTitle>Buy Pilgrim's Progress with Maggie</DialogTitle>
+            {checkoutElement}
+          </DialogContent>
+        </Dialog>
 
 
         <div className="flex justify-center">
