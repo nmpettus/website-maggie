@@ -78,11 +78,11 @@ const Hero = () => {
                 </span>
               </span>
               <span className="truncate font-display text-sm font-bold text-foreground sm:text-base">
-                Maggie's Pilgrim's Progress Adventure — Journey to the Celestial City!
+                Maggie's Pilgrim's Progress Adventure — Play free for a limited time!
               </span>
             </div>
             <span className="relative inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-r from-gold to-rose px-3 py-1.5 text-xs font-bold text-background shadow-elegant transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none sm:px-4 sm:text-sm">
-              Play Now
+              Play Now — Limited Time
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none" />
             </span>
           </div>
