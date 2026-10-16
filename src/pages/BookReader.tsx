@@ -636,21 +636,26 @@ export default function BookReader() {
   };
 
   // Fetch chunks one at a time (shared queue) so we never burst the voice service.
+  // Chunks for pages the reader has already left are skipped, so the queue never backs up.
   const ttsQueueRef = useRef<Promise<unknown>>(Promise.resolve());
-  const queueChunk = (text: string): Promise<string | null> => {
-    const next = ttsQueueRef.current.then(() => fetchOneChunk(text));
+  const wantedAudioKeyRef = useRef<string>("");
+  const queueChunk = (text: string, cacheKey: string): Promise<string | null> => {
+    const next = ttsQueueRef.current.then(() =>
+      wantedAudioKeyRef.current === cacheKey ? fetchOneChunk(text) : null
+    );
     ttsQueueRef.current = next.catch(() => null);
     return next;
   };
 
   // Cache promises so prefetch + click share work.
   const fetchAudioChunks = (cacheKey: string, text: string): Promise<string | null>[] => {
+    wantedAudioKeyRef.current = cacheKey;
     const cached = audioCacheRef.current.get(cacheKey);
     if (cached) return cached.map((u) => Promise.resolve(u));
     const inflight = inflightAudioRef.current.get(cacheKey);
     if (inflight) return inflight;
     const chunks = splitForTTS(text);
-    const promises = chunks.map((c) => queueChunk(c));
+    const promises = chunks.map((c) => queueChunk(c, cacheKey));
     inflightAudioRef.current.set(cacheKey, promises);
     Promise.all(promises).then((urls) => {
       inflightAudioRef.current.delete(cacheKey);
