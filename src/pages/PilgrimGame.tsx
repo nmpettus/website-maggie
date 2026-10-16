@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Compass, Download, Gamepad2, Heart, Mic, ScrollText, Sparkles, Star, Volume2 } from "lucide-react";
+import { Compass, Download, Gamepad2, Heart, Home, Mic, ScrollText, Sparkles, Star, Volume2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
@@ -77,6 +77,10 @@ const PilgrimGame = () => {
         {/* Hero */}
         <section className="container mx-auto px-6 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
           <div className="animate-fade-in">
+            <Link to="/" className="mb-4 inline-flex items-center gap-2 rounded-full bg-card px-4 py-2 font-bold text-foreground shadow hover:bg-accent/30">
+              <Home className="w-4 h-4" /> Return to Home
+            </Link>
+            <br />
             <span className="inline-flex items-center gap-2 rounded-full bg-accent/20 px-4 py-1 text-sm font-bold text-foreground">
               <Sparkles className="w-4 h-4" /> New family game
             </span>
@@ -130,12 +134,12 @@ const PilgrimGame = () => {
         {/* Gallery */}
         <section className="container mx-auto px-6 max-w-6xl mt-20">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">A peek at the journey</h2>
-          <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
             {gallery.map((g, i) => (
-              <button key={g.src} onClick={() => setZoom(g.src)} className="group overflow-hidden rounded-2xl shadow-lg animate-fade-in"
+              <button key={g.src} onClick={() => setZoom(g.src)} className="group overflow-hidden rounded-2xl shadow-lg bg-card animate-fade-in"
                 style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}>
                 <img src={g.src} alt={g.alt} loading="lazy"
-                  className="w-full h-56 md:h-72 object-cover transition-transform duration-[2500ms] group-hover:scale-110" />
+                  className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.03]" />
               </button>
             ))}
           </div>
