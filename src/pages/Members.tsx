@@ -69,6 +69,7 @@ export default function Members() {
   const [pendingUnlock, setPendingUnlock] = useState<Book | null>(null);
   const [downloadBusyId, setDownloadBusyId] = useState<string | null>(null);
   const [readingPdf, setReadingPdf] = useState<{ url: string; title: string } | null>(null);
+  const [fullCover, setFullCover] = useState<{ url: string; title: string } | null>(null);
 
 
   const checkoutHandledRef = useRef(false);
@@ -473,7 +474,7 @@ export default function Members() {
                       <div className="p-4">
                         <h3 className="font-bold mb-1 line-clamp-1">{book.title}</h3>
                         <p className="text-xs text-muted-foreground">
-                          {isDownload ? "PDF download" : `${book.page_count} pages`}
+                          {isDownload ? (book.download_path?.toLowerCase().endsWith(".html") ? "Game download" : "PDF download") : `${book.page_count} pages`}
                           {book.content_type ? ` • ${book.content_type.replace(/_/g, " ")}` : ""}
                           {" • "}
                           {book.is_free ? "Free" : `${cost} credit${cost === 1 ? "" : "s"}`}
@@ -490,7 +491,14 @@ export default function Members() {
                       className="group bg-card border rounded-xl overflow-hidden hover:shadow-lg transition-all flex flex-col"
                     >
                       {isDownload ? (
-                        <div className="block">{cardBody}</div>
+                        <button
+                          type="button"
+                          className="block w-full text-left cursor-zoom-in"
+                          aria-label={`View ${book.title} cover full size`}
+                          onClick={() => book.cover_image_url && setFullCover({ url: book.cover_image_url, title: book.title })}
+                        >
+                          {cardBody}
+                        </button>
                       ) : (
                         <Link to={`/read/${book.slug}`} className="block">{cardBody}</Link>
                       )}
