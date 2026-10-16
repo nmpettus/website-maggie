@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Compass, Download, Gamepad2, Heart, Mic, ScrollText, Sparkles, Star, Volume2, X } from "lucide-react";
+import { Compass, Download, Gamepad2, Heart, Mic, ScrollText, Sparkles, Star, Volume2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
@@ -129,7 +129,7 @@ const PilgrimGame = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">A peek at the journey</h2>
           <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
             {gallery.map((g, i) => (
-              <button key={g.src} onClick={() => setZoom(g.src)} className="group overflow-hidden rounded-2xl shadow-lg animate-scale-in"
+              <button key={g.src} onClick={() => setZoom(g.src)} className="group overflow-hidden rounded-2xl shadow-lg animate-fade-in"
                 style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}>
                 <img src={g.src} alt={g.alt} loading="lazy"
                   className="w-full h-56 md:h-72 object-cover transition-transform duration-[2500ms] group-hover:scale-110" />
