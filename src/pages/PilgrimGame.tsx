@@ -9,14 +9,14 @@ import { useSEO } from "@/hooks/useSEO";
 import { useAuth } from "@/hooks/useAuth";
 import { useStripeCheckout } from "@/hooks/useStripeCheckout";
 import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
-import cover from "@/assets/pilgrim/Pilgrim1.webp.asset.json";
-import pack from "@/assets/pilgrim/Matteo_s_Pilgrim_Pack.webp.asset.json";
-import s1 from "@/assets/pilgrim/Image.webp.asset.json";
-import s3 from "@/assets/pilgrim/Image_3.webp.asset.json";
-import s4 from "@/assets/pilgrim/Image_4.webp.asset.json";
-import s5 from "@/assets/pilgrim/Image_5.webp.asset.json";
-import s6 from "@/assets/pilgrim/Image_6.webp.asset.json";
-import s7 from "@/assets/pilgrim/Image_7.webp.asset.json";
+const cover = { url: "./images/pilgrim/Pilgrim1.webp" };
+const pack = { url: "./images/pilgrim/Matteo_s_Pilgrim_Pack.webp" };
+const s1 = { url: "./images/pilgrim/Image.webp" };
+const s3 = { url: "./images/pilgrim/Image_3.webp" };
+const s4 = { url: "./images/pilgrim/Image_4.webp" };
+const s5 = { url: "./images/pilgrim/Image_5.webp" };
+const s6 = { url: "./images/pilgrim/Image_6.webp" };
+const s7 = { url: "./images/pilgrim/Image_7.webp" };
 
 const gallery = [s1, s4, s5, s6, s7, s3].map((a, i) => ({ src: a.url, alt: `Scene ${i + 1} from the Pilgrim's Progress game` }));
 
