@@ -119,6 +119,30 @@ Deno.serve(async (req) => {
     const checkoutEmail = user?.email ?? customerEmail;
 
     const stripe = createStripeClient(environment as StripeEnv);
+
+    // One-time game download purchase
+    if (priceId === "pilgrim_game_download") {
+      if (!user) throw new Error("Please sign in before buying the game.");
+      const prices = await stripe.prices.list({ lookup_keys: [priceId], active: true, limit: 1 });
+      if (!prices.data.length) throw new Error("Price not found");
+      const price = prices.data[0];
+      const productId = typeof price.product === "string" ? price.product : price.product.id;
+      const product = await stripe.products.retrieve(productId);
+      const customerId = await resolveOrCreateCustomer(stripe, { email: user.email, userId: user.id });
+      const session = await stripe.checkout.sessions.create({
+        line_items: [{ price: price.id, quantity: 1 }],
+        mode: "payment",
+        ui_mode: "embedded_page",
+        return_url: returnUrl,
+        customer: customerId,
+        payment_intent_data: { description: product.name },
+        metadata: { userId: user.id, bookSlug: "pilgrim-game", purchase: "game_download" },
+      });
+      return new Response(JSON.stringify({ clientSecret: session.client_secret }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const stripePrice = await getOrCreateReadingClubPrice(stripe, priceId);
 
     const customerId = (checkoutEmail || checkoutUserId)
