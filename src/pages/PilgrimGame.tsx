@@ -95,7 +95,7 @@ const PilgrimGame = () => {
             )}
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="https://booksbymaggie.com/pilgrim" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="rounded-full text-lg"><Gamepad2 className="mr-2" /> Play online</Button>
+                <Button size="lg" className="rounded-full text-lg"><Gamepad2 className="mr-2" /> Play online — Limited Time</Button>
               </a>
               {user ? (
                 <Button size="lg" variant="secondary" className="rounded-full text-lg" onClick={buy}>
