@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Compass, Download, Gamepad2, Heart, Mic, ScrollText, Sparkles, Star, Volume2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -55,6 +55,9 @@ const PilgrimGame = () => {
   const { user } = useAuth();
   const { openCheckout, isOpen, closeCheckout, checkoutElement } = useStripeCheckout();
   const [zoom, setZoom] = useState<string | null>(null);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
   const [params] = useSearchParams();
   const purchased = params.get("purchased") === "1";
 
