@@ -58,7 +58,8 @@ Deno.serve(async (req) => {
       if (!unlock) return json({ error: 'Unlock this item with credits to download it' }, 403);
     }
 
-    const filename = `${book.title.replace(/[^a-z0-9]+/gi, '-').replace(/^-+|-+$/g, '')}.pdf`;
+    const ext = (book.download_path.split('.').pop() || 'pdf').toLowerCase();
+    const filename = `${book.title.replace(/[^a-z0-9]+/gi, '-').replace(/^-+|-+$/g, '')}.${ext}`;
     const { data: signed, error: signErr } = await admin.storage
       .from('book-pages')
       .createSignedUrl(book.download_path, 300, inlineRead ? {} : { download: filename });

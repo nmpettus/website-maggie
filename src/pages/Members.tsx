@@ -497,7 +497,7 @@ export default function Members() {
 
                       {isDownload && (
                         <div className="px-4 pb-4 mt-auto space-y-2">
-                          {unlocked && (
+                          {unlocked && !book.download_path?.toLowerCase().endsWith(".html") && (
                             <Button
                               size="sm"
                               variant="secondary"
@@ -519,7 +519,7 @@ export default function Members() {
                             {downloadBusyId === book.id
                               ? "Working…"
                               : unlocked
-                                ? "Download PDF"
+                                ? (book.download_path?.toLowerCase().endsWith(".html") ? "Download Game" : "Download PDF")
                                 : !isActive
                                   ? "Members only"
                                   : `Unlock & Read or Download (${cost} credit${cost === 1 ? "" : "s"})`}
