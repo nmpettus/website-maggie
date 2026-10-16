@@ -73,7 +73,7 @@ const Games = () => {
 
             <div className="relative shrink-0">
               <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold to-rose px-6 py-3 font-bold text-background shadow-elegant transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none">
-                Play Now
+                Play Now — Limited Time
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none" />
               </span>
             </div>
