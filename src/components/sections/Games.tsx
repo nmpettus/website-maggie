@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import MaggiesBibleAdventure from "@/components/games/MaggiesBibleAdventure";
 import { Gamepad2, Compass, Sparkles, ArrowRight } from "lucide-react";
@@ -65,6 +66,12 @@ const Games = () => {
             </div>
           </div>
         </a>
+        <div className="-mt-8 mb-12 text-center">
+          <Link to="/pilgrim-game" className="text-lg font-bold text-primary underline">
+            See game details, how to play & buy the download ($2.99)
+          </Link>
+        </div>
+
 
         <div className="flex justify-center">
           <MaggiesBibleAdventure />

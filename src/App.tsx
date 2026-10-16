@@ -32,6 +32,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Join from "./pages/Join";
 import Members from "./pages/Members";
 import BookReader from "./pages/BookReader";
+import PilgrimGame from "./pages/PilgrimGame";
 import { AuthProvider } from "./hooks/useAuth";
 
 const queryClient = new QueryClient();
@@ -82,6 +83,7 @@ const App = () => (
         <Route path="/matteo" element={<Matteo />} />
         <Route path="/riley" element={<Riley />} />
         <Route path="/artie" element={<Artie />} />
+        <Route path="/pilgrim-game" element={<PilgrimGame />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/join" element={<Join />} />

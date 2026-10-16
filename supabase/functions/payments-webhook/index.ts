@@ -135,6 +135,20 @@ Deno.serve(async (req) => {
         await handleSubscriptionDeleted(event.data.object, env); break;
       case "invoice.paid":
         await grantCreditsForInvoice(event.data.object, env); break;
+      case "checkout.session.completed":
+      case "checkout.session.async_payment_succeeded": {
+        const s = event.data.object;
+        if (s.payment_status !== "unpaid" && s.metadata?.purchase === "game_download" && s.metadata?.userId && s.metadata?.bookSlug) {
+          const { data: book } = await getSupabase().from("books").select("id").eq("slug", s.metadata.bookSlug).maybeSingle();
+          if (book) {
+            await getSupabase().from("unlocks").upsert(
+              { user_id: s.metadata.userId, book_id: (book as { id: string }).id },
+              { onConflict: "user_id,book_id", ignoreDuplicates: true },
+            );
+          }
+        }
+        break;
+      }
       default:
         console.log("Unhandled event:", event.type);
     }
