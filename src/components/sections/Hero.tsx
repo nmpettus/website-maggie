@@ -88,6 +88,36 @@ const Hero = () => {
           </div>
         </a>
 
+        {/* New book banner: God's Love for Little Hearts */}
+        <a
+          href="https://a.co/d/04VDSUkx"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative mb-6 flex overflow-hidden rounded-2xl bg-gradient-to-r from-rose via-primary to-gold p-[2px] shadow-book transition-transform duration-300 hover:-translate-y-0.5"
+        >
+          <div className="relative flex w-full items-center gap-3 overflow-hidden rounded-2xl bg-card px-4 py-2.5 sm:gap-4 sm:px-5">
+            <img
+              src="/images/gllh-cover.jpg"
+              alt="God's Love for Little Hearts book cover"
+              className="h-12 w-12 shrink-0 rounded-lg object-cover shadow-elegant"
+              loading="eager"
+            />
+            <div className="relative flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-rose/15 px-2 py-0.5">
+                <BookOpen className="h-3 w-3 text-rose" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-rose">New Book!</span>
+              </span>
+              <span className="truncate font-display text-sm font-bold text-foreground sm:text-base">
+                God's Love for Little Hearts — Maggie's newest story for little ones
+              </span>
+            </div>
+            <span className="relative inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-r from-rose to-gold px-3 py-1.5 text-xs font-bold text-background shadow-elegant transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none sm:px-4 sm:text-sm">
+              Get the Book
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none" />
+            </span>
+          </div>
+        </a>
+
         {/* Editorial hero card */}
         <div className="relative max-w-7xl mx-auto bg-card/40 backdrop-blur-sm border border-white/5 rounded-[2.5rem] shadow-2xl p-8 lg:p-16 overflow-hidden">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
