@@ -35,7 +35,11 @@ const Footer = () => {
   };
 
   return (
-    <footer id="footer" className="bg-foreground text-background">
+    <footer
+      id="footer"
+      className="bg-foreground text-background"
+      style={{ ["--foreground" as string]: "0 0% 0%", ["--background" as string]: "0 0% 100%" } as React.CSSProperties}
+    >
       {/* Main Footer Content */}
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
