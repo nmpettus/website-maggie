@@ -15,6 +15,7 @@ import MaggiesAIAdventures from "./pages/MaggiesAIAdventures";
 import AIAdventuresBook from "./pages/books/AIAdventuresBook";
 import CreationBook from "./pages/books/CreationBook";
 import GodsLoveBook from "./pages/books/GodsLoveBook";
+import WhyAmIHereBook from "./pages/books/WhyAmIHereBook";
 import JonahBook from "./pages/books/JonahBook";
 import NoahsArkBook from "./pages/books/NoahsArkBook";
 import ChristmasBook from "./pages/books/ChristmasBook";
@@ -71,6 +72,7 @@ const App = () => (
         <Route path="/books/ai-adventures" element={<AIAdventuresBook />} />
         <Route path="/books/creation" element={<CreationBook />} />
         <Route path="/books/gods-love" element={<GodsLoveBook />} />
+        <Route path="/books/why-am-i-here" element={<WhyAmIHereBook />} />
         <Route path="/books/jonah" element={<JonahBook />} />
         <Route path="/books/noahs-ark" element={<NoahsArkBook />} />
         <Route path="/books/christmas" element={<ChristmasBook />} />
