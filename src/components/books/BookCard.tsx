@@ -99,6 +99,7 @@ const BookCard = ({
       'noah': '/books/noahs-ark',
       'jonah': '/books/jonah',
       'gods-love': '/books/gods-love',
+      'why-am-i-here': '/books/why-am-i-here',
       'ai-adventures': '/books/ai-adventures',
       'thanksgiving': '/books/thanksgiving',
       'christmas': '/books/christmas',
