@@ -64,7 +64,7 @@ const Hero = () => {
       <div className="container mx-auto relative z-10">
         {/* Rotating announcement banner */}
         <div
-          className="relative mb-6"
+          className="relative mb-3"
           onMouseEnter={() => setBannerPaused(true)}
           onMouseLeave={() => setBannerPaused(false)}
           onFocus={() => setBannerPaused(true)}
@@ -150,7 +150,7 @@ const Hero = () => {
         </div>
 
         {/* Editorial hero card */}
-        <div className="relative max-w-7xl mx-auto bg-card/40 backdrop-blur-sm border border-white/5 rounded-[2.5rem] shadow-2xl px-8 pb-8 pt-6 lg:px-16 lg:pb-16 lg:pt-10 overflow-hidden">
+        <div className="relative max-w-7xl mx-auto bg-card/40 backdrop-blur-sm border border-white/5 rounded-[2.5rem] shadow-2xl px-8 pb-8 pt-3 lg:px-16 lg:pb-16 lg:pt-4 overflow-hidden">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center lg:items-start">
             {/* Left content column */}
             <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
