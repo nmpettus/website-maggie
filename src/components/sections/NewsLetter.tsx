@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
 import { isDevelopmentMode } from "@/utils/environmentUtils"
-import { Mail } from "lucide-react"
+import { Mail, Download, Palette } from "lucide-react"
 
 interface Subscriber {
   email: string
@@ -17,6 +17,7 @@ const Newsletter = () => {
   const [email, setEmail] = useState("")
   const [subscribers, setSubscribers] = useState<Subscriber[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [unlocked, setUnlocked] = useState(false)
 
   useEffect(() => {
     const savedSubscribers = localStorage.getItem("newsletter-subscribers")
@@ -57,7 +58,8 @@ const Newsletter = () => {
         const subscribers: Subscriber[] = savedSubscribers ? JSON.parse(savedSubscribers) : []
 
         if (subscribers.some((sub) => sub.email === email)) {
-          toast.info("This email is already subscribed to our newsletter!")
+          toast.info("You're already on Maggie's list — enjoy your coloring pages!")
+        setUnlocked(true)
           setIsSubmitting(false)
           return
         }
@@ -69,7 +71,8 @@ const Newsletter = () => {
 
         localStorage.setItem("newsletter-subscribers", JSON.stringify([...subscribers, newSubscriber]))
 
-        toast.success("Thank you for subscribing to our newsletter!")
+        toast.success("Thank you! Your free coloring pages are ready.")
+        setUnlocked(true)
         setEmail("")
       } else {
         const formData = new FormData()
@@ -88,10 +91,12 @@ const Newsletter = () => {
           console.log("Newsletter subscription response:", result)
 
           if (result.success) {
-            toast.success("Thank you for subscribing to our newsletter!")
+            toast.success("Thank you! Your free coloring pages are ready.")
+        setUnlocked(true)
             setEmail("")
           } else if (result.message && result.message.includes("already subscribed")) {
-            toast.info("This email is already subscribed to our newsletter!")
+            toast.info("You're already on Maggie's list — enjoy your coloring pages!")
+        setUnlocked(true)
           } else {
             throw new Error(result.message || "Failed to process subscription")
           }
@@ -115,16 +120,27 @@ const Newsletter = () => {
         <div className="max-w-2xl mx-auto text-center">
           {/* Icon */}
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-foreground/10 mb-6">
-            <Mail className="w-8 h-8 text-primary-foreground" />
+            <Palette className="w-8 h-8 text-primary-foreground" />
           </div>
           
           <h2 className="text-3xl md:text-4xl font-display font-bold text-primary-foreground mb-4">
-            Join Our Newsletter
+            Get Maggie's Free Coloring Pages
           </h2>
           <p className="text-lg text-primary-foreground/80 mb-8">
-            Get updates on new releases, special offers, and Maggie's latest adventures delivered to your inbox.
+            Join Maggie's family list and download a free set of Bible story coloring pages. We'll also let you know when Maggie has a new book.
           </p>
 
+          {unlocked ? (
+            <div className="max-w-md mx-auto space-y-3">
+              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold rounded-lg px-8">
+                <a href="/activities/coloring-pages.pdf" target="_blank" rel="noopener noreferrer" download>
+                  <Download className="w-5 h-5 mr-2" />
+                  Download Coloring Pages
+                </a>
+              </Button>
+              <p className="text-sm text-primary-foreground/70">Print as many as you like. Happy coloring!</p>
+            </div>
+          ) : (
           <form className="max-w-md mx-auto" onSubmit={handleSubscribe}>
             <div className="flex flex-col sm:flex-row gap-3">
               <Input
@@ -140,13 +156,14 @@ const Newsletter = () => {
                 className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium rounded-lg px-6"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Subscribing..." : "Subscribe"}
+                {isSubmitting ? "Sending..." : "Get Free Pages"}
               </Button>
             </div>
             <p className="text-sm mt-4 text-primary-foreground/60">
               We respect your privacy. Unsubscribe at any time.
             </p>
           </form>
+          )}
 
           {isDevelopmentMode && (
             <div className="mt-4">
