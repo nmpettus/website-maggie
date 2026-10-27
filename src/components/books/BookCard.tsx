@@ -100,6 +100,8 @@ const BookCard = ({
       'jonah': '/books/jonah',
       'gods-love': '/books/gods-love',
       'why-am-i-here': '/books/why-am-i-here',
+      'gllh': '/books/gods-love-little-hearts',
+      'ai-adventures-book2': '/books/ai-adventures-book-2',
       'ai-adventures': '/books/ai-adventures',
       'thanksgiving': '/books/thanksgiving',
       'christmas': '/books/christmas',
