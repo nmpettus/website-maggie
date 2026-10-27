@@ -16,6 +16,7 @@ import AIAdventuresBook from "./pages/books/AIAdventuresBook";
 import CreationBook from "./pages/books/CreationBook";
 import GodsLoveBook from "./pages/books/GodsLoveBook";
 import WhyAmIHereBook from "./pages/books/WhyAmIHereBook";
+import SimpleBookDetails from "./pages/books/SimpleBookDetails";
 import JonahBook from "./pages/books/JonahBook";
 import NoahsArkBook from "./pages/books/NoahsArkBook";
 import ChristmasBook from "./pages/books/ChristmasBook";
@@ -73,6 +74,53 @@ const App = () => (
         <Route path="/books/creation" element={<CreationBook />} />
         <Route path="/books/gods-love" element={<GodsLoveBook />} />
         <Route path="/books/why-am-i-here" element={<WhyAmIHereBook />} />
+        <Route
+          path="/books/gods-love-little-hearts"
+          element={
+            <SimpleBookDetails
+              bookId="gllh"
+              shortTitle="God's Love for Little Hearts"
+              subtitle="as told by Maggie"
+              seoDescription="Maggie the Yorkie takes little ones from creation to Easter in this warm, faith-filled picture book for ages 3–7."
+              keywords={["Christian picture book", "God's love for kids", "Maggie the Yorkie", "Easter story for toddlers"]}
+              discover={[
+                "God made them, knows them, and loves them",
+                "The wonder of God's creation",
+                "God's promises and who Jesus is",
+                "Forgiveness and the hope of Easter",
+              ]}
+              inside={[
+                "\"Maggie Asks\" questions to talk about together",
+                "\"Maggie's Big Truth\" reminders",
+                "Scripture references and a prayer",
+                "A coloring page and a parent discussion guide",
+              ]}
+            />
+          }
+        />
+        <Route
+          path="/books/ai-adventures-book-2"
+          element={
+            <SimpleBookDetails
+              bookId="ai-adventures-book2"
+              shortTitle="Maggie's AI Adventure — Book 2"
+              subtitle="AI Talking and Thinking"
+              seoDescription="Maggie, Riley, and Artie discover how computers hear, talk, and think in this AI adventure for ages 7–12."
+              keywords={["AI book for kids", "speech and language for kids", "Maggie the Yorkie", "STEM children's book"]}
+              discover={[
+                "How machines can \"hear\" and \"talk\"",
+                "The basics of speech and language",
+                "How voice assistants and translation apps work",
+                "Closed captions, chatbots, and everyday AI tools",
+              ]}
+              inside={[
+                "A mystery solved by Maggie, Riley, and Artie",
+                "Kid-friendly science explanations",
+                "Written for ages 7–12",
+              ]}
+            />
+          }
+        />
         <Route path="/books/jonah" element={<JonahBook />} />
         <Route path="/books/noahs-ark" element={<NoahsArkBook />} />
         <Route path="/books/christmas" element={<ChristmasBook />} />
