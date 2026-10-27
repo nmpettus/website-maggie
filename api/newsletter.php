@@ -101,6 +101,20 @@ try {
         throw new Exception("Failed to write to subscribers file");
     }
 
+    // Also save to email.csv (email, date, source)
+    $csv_file = __DIR__ . '/email.csv';
+    $is_new_csv = !file_exists($csv_file) || filesize($csv_file) === 0;
+    $fh = fopen($csv_file, 'a');
+    if ($fh) {
+        flock($fh, LOCK_EX);
+        if ($is_new_csv) fputcsv($fh, ['email', 'date', 'source']);
+        $source = isset($data['source']) ? substr(preg_replace('/[^a-zA-Z0-9 _-]/', '', $data['source']), 0, 50) : 'coloring-pages';
+        fputcsv($fh, [$email, date('Y-m-d H:i:s'), $source]);
+        flock($fh, LOCK_UN);
+        fclose($fh);
+    }
+    file_put_contents($log_file, "CSV write: " . ($fh ? "Success" : "Failed") . "\n", FILE_APPEND);
+
     // Log success
     file_put_contents($log_file, "Successfully added email to subscribers: $email\n", FILE_APPEND);
     
