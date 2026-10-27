@@ -182,29 +182,41 @@ const Hero = () => {
                 family devotions, and nurturing faith in young hearts.
               </p>
 
-              {/* Primary CTAs */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+              {/* Primary CTA: Books */}
+              <div className="flex flex-col items-center lg:items-start gap-4">
                 <Button
-                  asChild
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-14 text-base rounded-2xl shadow-[0_0_20px_rgba(79,70,229,0.4)] transition-all hover:scale-105"
+                  className="bg-gradient-to-r from-gold to-rose text-background font-extrabold px-10 h-16 text-lg rounded-2xl shadow-elegant transition-all hover:scale-105 motion-reduce:hover:scale-100"
+                  onClick={() => document.getElementById("books")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  <Link to="/online-library">
-                    <BookOpen className="w-5 h-5 mr-2" />
-                    Read a Story
-                  </Link>
+                  <BookOpen className="w-6 h-6 mr-2" />
+                  Shop Maggie's Books
+                  <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="font-bold px-8 h-14 text-base rounded-2xl border-white/10 text-white hover:bg-white/5 hover:text-white"
-                >
-                  <Link to="/ask-maggie">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Ask Maggie
-                  </Link>
-                </Button>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="font-semibold rounded-xl border-white/15 text-white hover:bg-white/5 hover:text-white"
+                  >
+                    <Link to="/online-library">
+                      <BookOpen className="w-4 h-4 mr-2" />
+                      Read a Free Story
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="font-semibold rounded-xl border-white/15 text-white hover:bg-white/5 hover:text-white"
+                  >
+                    <Link to="/ask-maggie">
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Ask Maggie
+                    </Link>
+                  </Button>
+                </div>
               </div>
 
               {/* Reading Club CTA */}
