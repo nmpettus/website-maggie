@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BookOpen, MessageCircle, ArrowRight, Loader2, Compass, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,13 @@ const Hero = () => {
   const [showReadingClubModal, setShowReadingClubModal] = useState(false);
   const [signInConfirmed, setSignInConfirmed] = useState(false);
   const [matteoFront, setMatteoFront] = useState(false);
+  const [bannerIndex, setBannerIndex] = useState(0);
+  const [bannerPaused, setBannerPaused] = useState(false);
+  useEffect(() => {
+    if (bannerPaused) return;
+    const id = window.setInterval(() => setBannerIndex((i) => (i + 1) % 2), 6000);
+    return () => window.clearInterval(id);
+  }, [bannerPaused]);
 
   const handleReadingClubClick = () => {
     setSignInConfirmed(false);
@@ -55,12 +62,21 @@ const Hero = () => {
       <div className="absolute bottom-0 -right-20 w-96 h-96 bg-secondary/30 rounded-full blur-3xl gpu-layer-opacity" />
 
       <div className="container mx-auto relative z-10">
-        {/* Compact New Game invite strip */}
+        {/* Rotating announcement banner */}
+        <div
+          className="relative mb-6"
+          onMouseEnter={() => setBannerPaused(true)}
+          onMouseLeave={() => setBannerPaused(false)}
+          onFocus={() => setBannerPaused(true)}
+          onBlur={() => setBannerPaused(false)}
+        >
         <a
           href="https://booksbymaggie.com/pilgrim"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative mb-6 flex overflow-hidden rounded-2xl bg-gradient-to-r from-gold via-rose to-primary p-[2px] shadow-book transition-transform duration-300 hover:-translate-y-0.5"
+          aria-hidden={bannerIndex !== 0}
+          tabIndex={bannerIndex !== 0 ? -1 : undefined}
+          className={`group relative overflow-hidden rounded-2xl bg-gradient-to-r from-gold via-rose to-primary p-[2px] shadow-book transition-transform duration-300 hover:-translate-y-0.5 animate-fade-in ${bannerIndex === 0 ? "flex" : "hidden"}`}
         >
           <div className="relative flex w-full items-center gap-3 overflow-hidden rounded-2xl bg-sage-dark px-4 py-2.5 sm:gap-4 sm:px-5">
             <div
@@ -93,7 +109,9 @@ const Hero = () => {
           href="https://a.co/d/04VDSUkx"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative mb-6 flex overflow-hidden rounded-2xl bg-gradient-to-r from-rose via-primary to-gold p-[2px] shadow-book transition-transform duration-300 hover:-translate-y-0.5"
+          aria-hidden={bannerIndex !== 1}
+          tabIndex={bannerIndex !== 1 ? -1 : undefined}
+          className={`group relative overflow-hidden rounded-2xl bg-gradient-to-r from-rose via-primary to-gold p-[2px] shadow-book transition-transform duration-300 hover:-translate-y-0.5 animate-fade-in ${bannerIndex === 1 ? "flex" : "hidden"}`}
         >
           <div className="relative flex w-full items-center gap-3 overflow-hidden rounded-2xl bg-card px-4 py-2.5 sm:gap-4 sm:px-5">
             <img
@@ -117,6 +135,19 @@ const Hero = () => {
             </span>
           </div>
         </a>
+        <div className="mt-2 flex justify-center gap-2">
+          {["Pilgrim's Progress game", "God's Love for Little Hearts"].map((label, i) => (
+            <button
+              key={label}
+              type="button"
+              aria-label={`Show ${label} announcement`}
+              aria-current={bannerIndex === i}
+              onClick={() => setBannerIndex(i)}
+              className={`h-2 rounded-full transition-all ${bannerIndex === i ? "w-6 bg-gold" : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/70"}`}
+            />
+          ))}
+        </div>
+        </div>
 
         {/* Editorial hero card */}
         <div className="relative max-w-7xl mx-auto bg-card/40 backdrop-blur-sm border border-white/5 rounded-[2.5rem] shadow-2xl p-8 lg:p-16 overflow-hidden">
