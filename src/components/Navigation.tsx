@@ -24,7 +24,7 @@ const NAV_LINKS = [
   { id: 'home', label: 'Home', isRoute: false },
   { id: 'about', label: 'About', isRoute: true, route: '/about' },
   
-  { id: 'online-library', label: 'Online Library', isRoute: true, route: '/online-library' },
+  { id: 'online-library', label: 'Free Stories', isRoute: true, route: '/online-library' },
   { id: 'videos', label: 'Videos', isRoute: true, route: '/videos' },
   { id: 'activities', label: 'Activities', isRoute: false },
   { id: 'games', label: 'Games', isRoute: false },
