@@ -436,7 +436,7 @@ export const booksData: BookData[] = [
   },
   {
     id: "why-am-i-here",
-    coverImage: "/images/why-am-i-here-cover.jpg",
+    coverImage: "/images/why-am-i-here-cover.jpg?v=2",
     title: "Why Am I Here? Who Am I? God Given Identity, Love, and Purpose",
     languages: ["English"],
     description: "Every child wonders it sooner or later: Why am I here? Who am I? Join Maggie, Matteo, and a curious little girl as they discover the beautiful answer God has already given — that each of us is known, deeply loved, and made on purpose for a purpose. A warm, faith-filled picture book about God-given identity, love, and purpose for children and the families who read with them.",
