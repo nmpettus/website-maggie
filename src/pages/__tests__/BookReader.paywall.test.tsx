@@ -136,7 +136,7 @@ describe("BookReader paywall gating", () => {
 
     // Paywall CTA appears at end of preview
     expect(
-      screen.getByText(/Keep reading with Maggie's Reading Club/i),
+      screen.getByText(/Keep reading with Maggie's Clubhouse/i),
     ).toBeInTheDocument();
 
     // Next button is disabled — cannot advance to page 4
@@ -175,7 +175,7 @@ describe("BookReader paywall gating", () => {
       expect(screen.getByText(/Page 4 of 10/i)).toBeInTheDocument(),
     );
     expect(
-      screen.queryByText(/Keep reading with Maggie's Reading Club/i),
+      screen.queryByText(/Keep reading with Maggie's Clubhouse/i),
     ).not.toBeInTheDocument();
   });
 });

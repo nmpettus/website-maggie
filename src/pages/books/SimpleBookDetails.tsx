@@ -94,7 +94,7 @@ const SimpleBookDetails = ({ bookId, shortTitle, subtitle, seoDescription, keywo
                 <Button asChild variant="outline" className="w-full rounded-full">
                   <Link to="/join">
                     <BookOpen className="w-4 h-4 mr-2" />
-                    Read it in Maggie's Reading Club
+                    Read it in Maggie's Clubhouse
                   </Link>
                 </Button>
               </div>

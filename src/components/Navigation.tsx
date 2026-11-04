@@ -28,7 +28,7 @@ const NAV_LINKS = [
   { id: 'videos', label: 'Videos', isRoute: true, route: '/videos' },
   { id: 'activities', label: 'Activities', isRoute: false },
   { id: 'games', label: 'Games', isRoute: false },
-  { id: 'reading-club', label: "Reading Club", isRoute: true, route: '/join' },
+  { id: 'reading-club', label: "Maggie's Clubhouse", isRoute: true, route: '/join' },
 ];
 
 
@@ -444,11 +444,11 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Reading Club subscription check modal */}
+      {/* Maggie's Clubhouse subscription check modal */}
       <Dialog open={showReadingClubModal} onOpenChange={setShowReadingClubModal}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Maggie's Reading Club</DialogTitle>
+            <DialogTitle>Maggie's Clubhouse</DialogTitle>
             <DialogDescription>
               Let's check your account so we can get you to the right place.
             </DialogDescription>
@@ -462,7 +462,7 @@ const Navigation = () => {
               </div>
             ) : !user ? (
               <p className="text-foreground font-medium">
-                Please sign in first. Once you're signed in we'll check whether you already have a Reading Club subscription.
+                Please sign in first. Once you're signed in we'll check whether you already have a Maggie's Clubhouse subscription.
               </p>
             ) : !signInConfirmed ? (
               <p className="text-foreground font-medium">
@@ -474,7 +474,7 @@ const Navigation = () => {
               </p>
             ) : (
               <p className="text-foreground font-medium">
-                You don't have an active subscription yet. Join the Reading Club today.
+                You don't have an active subscription yet. Join Maggie's Clubhouse today.
               </p>
             )}
           </div>
@@ -495,7 +495,7 @@ const Navigation = () => {
             ) : isActive ? (
               <Button onClick={handleGoToLibrary}>Go to Library</Button>
             ) : (
-              <Button onClick={handleStartTrial}>Join the Reading Club</Button>
+              <Button onClick={handleStartTrial}>Join Maggie's Clubhouse</Button>
             )}
           </DialogFooter>
         </DialogContent>

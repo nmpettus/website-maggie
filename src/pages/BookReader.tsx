@@ -883,7 +883,7 @@ export default function BookReader() {
           {showPaywallNext && (
             <div className="mt-4 bg-primary text-primary-foreground rounded-xl p-6 text-center">
               <Lock className="w-8 h-8 mx-auto mb-2" />
-              <h3 className="text-xl font-bold mb-1">Keep reading with Maggie's Reading Club</h3>
+              <h3 className="text-xl font-bold mb-1">Keep reading with Maggie's Clubhouse</h3>
               <p className="text-sm opacity-90 mb-4">
                 {user
                   ? `Unlock this ${book?.credit_cost ?? 3}-credit book with your reading credits, or subscribe for unlimited access.`

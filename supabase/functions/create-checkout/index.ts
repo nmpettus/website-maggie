@@ -70,10 +70,10 @@ async function getOrCreateReadingClubPrice(
   const priceConfig = READING_CLUB_PRICES[priceId];
   if (!priceConfig) throw new Error("Price not found");
 
-  console.warn(`Price lookup_key ${priceId} missing; creating managed Reading Club price.`);
+  console.warn(`Price lookup_key ${priceId} missing; creating managed Maggie's Clubhouse price.`);
   const product = await stripe.products.create({
-    name: "Maggie's Reading Club",
-    description: "Unlimited online access to Maggie's library with narration",
+    name: "Maggie's Clubhouse",
+    description: "Monthly stories, coloring & games for curious kids — unlimited online access to Maggie's library with narration",
     tax_code: "txcd_10103001",
     metadata: {
       lovable_external_id: "reading_club",
