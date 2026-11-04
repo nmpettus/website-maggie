@@ -240,12 +240,12 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Reading Club CTA */}
+              {/* Maggie's Clubhouse CTA */}
               <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 max-w-xl mx-auto lg:mx-0">
                 <div className="flex-1 text-left">
-                  <p className="font-bold text-white text-lg font-heading">📚 Join Maggie's Reading Club</p>
+                  <p className="font-bold text-white text-lg font-heading">📚 Join Maggie's Clubhouse</p>
                   <p className="text-sm text-indigo-200/60 font-body">
-                    Read every book online with read-aloud narration.
+                    Monthly stories, coloring &amp; games for curious kids — every book online with read-aloud narration.
                   </p>
                 </div>
                 <Button
@@ -378,11 +378,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Reading Club subscription check modal */}
+      {/* Maggie's Clubhouse subscription check modal */}
       <Dialog open={showReadingClubModal} onOpenChange={setShowReadingClubModal}>
         <DialogContent className="sm:max-w-md bg-card border-border">
           <DialogHeader>
-            <DialogTitle className="font-heading text-white">Maggie's Reading Club</DialogTitle>
+            <DialogTitle className="font-heading text-white">Maggie's Clubhouse</DialogTitle>
             <DialogDescription className="text-indigo-200/60 font-body">
               Let's check your account so we can get you to the right place.
             </DialogDescription>
@@ -396,7 +396,7 @@ const Hero = () => {
               </div>
             ) : !user ? (
               <p className="text-foreground font-medium font-body">
-                Please sign in first. Once you're signed in we'll check whether you already have a Reading Club subscription.
+                Please sign in first. Once you're signed in we'll check whether you already have a Maggie's Clubhouse subscription.
               </p>
             ) : !signInConfirmed ? (
               <p className="text-foreground font-medium font-body">
@@ -408,7 +408,7 @@ const Hero = () => {
               </p>
             ) : (
               <p className="text-foreground font-medium font-body">
-                You don't have an active subscription yet. Join the Reading Club today.
+                You don't have an active subscription yet. Join Maggie's Clubhouse today.
               </p>
             )}
           </div>
@@ -429,7 +429,7 @@ const Hero = () => {
             ) : isActive ? (
               <Button onClick={handleGoToLibrary}>Go to Library</Button>
             ) : (
-              <Button onClick={handleStartTrial}>Join the Reading Club</Button>
+              <Button onClick={handleStartTrial}>Join Maggie's Clubhouse</Button>
             )}
           </DialogFooter>
         </DialogContent>
