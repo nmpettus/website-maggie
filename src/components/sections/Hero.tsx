@@ -135,8 +135,42 @@ const Hero = () => {
             </span>
           </div>
         </a>
+        {/* New game banner: Maggie and Matteo in Wonderland */}
+        <a
+          href="https://booksbymaggie.com/wonderland"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-hidden={bannerIndex !== 2}
+          tabIndex={bannerIndex !== 2 ? -1 : undefined}
+          className={`group relative overflow-hidden rounded-2xl bg-gradient-to-r from-lavender via-primary to-gold p-[2px] shadow-book transition-transform duration-300 hover:-translate-y-0.5 animate-fade-in ${bannerIndex === 2 ? "flex" : "hidden"}`}
+        >
+          <div className="relative flex w-full items-center gap-3 overflow-hidden rounded-2xl bg-sage-dark px-4 py-2.5 sm:gap-4 sm:px-5">
+            <div
+              className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-lavender/25 blur-2xl"
+              aria-hidden="true"
+            />
+            <div className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-lavender to-primary text-background shadow-elegant">
+              <Wand2 className="h-5 w-5" />
+            </div>
+            <div className="relative flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-lavender/15 px-2 py-0.5">
+                <Sparkles className="h-3 w-3 animate-sparkle text-lavender motion-reduce:animate-none" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-lavender">
+                  New Game!
+                </span>
+              </span>
+              <span className="truncate font-display text-sm font-bold text-foreground sm:text-base">
+                Maggie and Matteo in Wonderland — Step through the looking glass!
+              </span>
+            </div>
+            <span className="relative inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-r from-lavender to-gold px-3 py-1.5 text-xs font-bold text-background shadow-elegant transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none sm:px-4 sm:text-sm">
+              Play Now
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none" />
+            </span>
+          </div>
+        </a>
         <div className="mt-2 flex justify-center gap-2">
-          {["Pilgrim's Progress game", "God's Love for Little Hearts"].map((label, i) => (
+          {["Pilgrim's Progress game", "God's Love for Little Hearts", "Maggie and Matteo in Wonderland"].map((label, i) => (
             <button
               key={label}
               type="button"
