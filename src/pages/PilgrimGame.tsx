@@ -108,7 +108,7 @@ const PilgrimGame = () => {
               )}
             </div>
             <p className="mt-3 text-base text-foreground/70">
-              Reading Club members can also unlock it for 2 credits in <Link to="/members" className="underline font-semibold">My Library</Link>.
+              Clubhouse members can also unlock it for 2 credits in <Link to="/members" className="underline font-semibold">My Library</Link>.
             </p>
           </div>
           <div className="relative">

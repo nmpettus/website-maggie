@@ -142,9 +142,12 @@ export default function Join() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-primary/10 px-5 py-3 rounded-full mb-4">
                 <Sparkles className="w-5 h-5 text-primary" />
-                <span className="text-xl font-extrabold text-primary">Join the Reading Club</span>
+                <span className="text-xl font-extrabold text-primary">Join Maggie's Clubhouse</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Maggie's Reading Club</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-2">Maggie's Clubhouse</h1>
+              <p className="text-2xl font-heading font-bold text-primary mb-4">
+                Monthly Stories, Coloring &amp; Games for Curious Kids
+              </p>
               <p className="text-xl text-foreground font-semibold max-w-2xl mx-auto">
                 Unlimited online access to Maggie's full library — with read-aloud narration so kids can listen along.
               </p>

@@ -131,11 +131,11 @@ export default function Auth() {
               <BookOpen className="w-7 h-7 text-primary" />
             </div>
             <h1 className="text-3xl font-bold">
-              {mode === "signup" ? "Join Maggie's Reading Club" : "Welcome Back"}
+              {mode === "signup" ? "Join Maggie's Clubhouse" : "Welcome Back"}
             </h1>
             <p className="text-foreground text-base font-semibold mt-2">
               {mode === "signup"
-                ? "Create your free account to join the Reading Club."
+                ? "Create your free account to join Maggie's Clubhouse."
                 : "Sign in to access your library."}
             </p>
           </div>
