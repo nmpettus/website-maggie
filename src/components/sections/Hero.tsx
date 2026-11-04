@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BookOpen, MessageCircle, ArrowRight, Loader2, Compass, Sparkles } from "lucide-react";
+import { BookOpen, MessageCircle, ArrowRight, Loader2, Compass, Sparkles, Wand2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useSubscription } from "@/hooks/useSubscription";
@@ -26,7 +26,7 @@ const Hero = () => {
   const [bannerPaused, setBannerPaused] = useState(false);
   useEffect(() => {
     if (bannerPaused) return;
-    const id = window.setInterval(() => setBannerIndex((i) => (i + 1) % 2), 6000);
+    const id = window.setInterval(() => setBannerIndex((i) => (i + 1) % 3), 6000);
     return () => window.clearInterval(id);
   }, [bannerPaused]);
 
