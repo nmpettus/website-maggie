@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BookOpen, MessageCircle, ArrowRight, Loader2, Compass, Sparkles, Wand2 } from "lucide-react";
+import { BookOpen, MessageCircle, ArrowRight, Loader2, Compass, Sparkles, Wand2, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useSubscription } from "@/hooks/useSubscription";
