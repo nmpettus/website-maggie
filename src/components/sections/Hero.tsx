@@ -203,16 +203,35 @@ const Hero = () => {
             </span>
           </div>
         </a>
-        <div className="mt-2 flex justify-center gap-2">
-          {["Pilgrim's Progress game", "God's Love for Little Hearts", "Maggie and Matteo in Wonderland", "Princess and the Goblin game"].map((label, i) => (
-            <button
-              key={label}
-              type="button"
-              aria-label={`Show ${label} announcement`}
-              aria-current={bannerIndex === i}
-              onClick={() => setBannerIndex(i)}
-              className={`h-2 rounded-full transition-all ${bannerIndex === i ? "w-6 bg-gold" : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/70"}`}
-            />
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
+          <span className="px-1 text-[10px] font-bold uppercase tracking-widest text-indigo-200/60 font-body">
+            Play &amp; read now
+          </span>
+          {[
+            { name: "Pilgrim's Progress", href: "https://booksbymaggie.com/pilgrim", Icon: Compass, glow: "from-gold to-rose", ring: "ring-gold/70", tint: "bg-gold/15" },
+            { name: "Wonderland", href: "https://booksbymaggie.com/wonderland", Icon: Wand2, glow: "from-primary to-gold", ring: "ring-primary/70", tint: "bg-primary/15" },
+            { name: "Princess and the Goblin", href: "https://booksbymaggie.com/princess", Icon: Crown, glow: "from-secondary to-gold", ring: "ring-secondary/70", tint: "bg-secondary/15" },
+            { name: "God's Love for Little Hearts", href: "https://a.co/d/04VDSUkx", Icon: BookOpen, glow: "from-rose to-gold", ring: "ring-rose/70", tint: "bg-rose/15" },
+          ].map((item, i) => (
+            <a
+              key={item.name}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group inline-flex items-center gap-2 rounded-full border px-3 py-1.5 transition-all duration-200 hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 ${
+                bannerIndex === i
+                  ? `border-white/25 ${item.tint} ring-2 ${item.ring}`
+                  : "border-white/12 bg-white/5 hover:bg-white/10"
+              }`}
+            >
+              <span className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${item.glow} text-background shadow-elegant`}>
+                <item.Icon className="h-3 w-3" />
+              </span>
+              <span className="font-display text-xs font-bold text-white sm:text-sm">
+                {item.name}
+              </span>
+              <ArrowRight className="h-3 w-3 text-indigo-200/50 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none" />
+            </a>
           ))}
         </div>
         </div>
