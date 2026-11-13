@@ -26,7 +26,7 @@ const Hero = () => {
   const [bannerPaused, setBannerPaused] = useState(false);
   useEffect(() => {
     if (bannerPaused) return;
-    const id = window.setInterval(() => setBannerIndex((i) => (i + 1) % 3), 6000);
+    const id = window.setInterval(() => setBannerIndex((i) => (i + 1) % 4), 6000);
     return () => window.clearInterval(id);
   }, [bannerPaused]);
 
