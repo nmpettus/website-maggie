@@ -170,7 +170,7 @@ const Hero = () => {
           </div>
         </a>
         <div className="mt-2 flex justify-center gap-2">
-          {["Pilgrim's Progress game", "God's Love for Little Hearts", "Maggie and Matteo in Wonderland"].map((label, i) => (
+          {["Pilgrim's Progress game", "God's Love for Little Hearts", "Maggie and Matteo in Wonderland", "Princess and the Goblin game"].map((label, i) => (
             <button
               key={label}
               type="button"
