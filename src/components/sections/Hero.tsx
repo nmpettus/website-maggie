@@ -187,9 +187,9 @@ const Hero = () => {
               <Crown className="h-5 w-5" />
             </div>
             <div className="relative flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-secondary/15 px-2 py-0.5">
-                <Sparkles className="h-3 w-3 animate-sparkle text-secondary motion-reduce:animate-none" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-secondary">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-rose/15 px-2 py-0.5">
+                <Sparkles className="h-3 w-3 animate-sparkle text-rose motion-reduce:animate-none" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-rose">
                   New Game!
                 </span>
               </span>
@@ -197,7 +197,7 @@ const Hero = () => {
                 Princess and the Goblin — Maggie's brave new adventure awaits!
               </span>
             </div>
-            <span className="relative inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-r from-secondary to-gold px-3 py-1.5 text-xs font-bold text-background shadow-elegant transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none sm:px-4 sm:text-sm">
+            <span className="relative inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-r from-gold via-primary to-rose px-3 py-1.5 text-xs font-bold text-background shadow-elegant transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none sm:px-4 sm:text-sm">
               Play Now
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none" />
             </span>
