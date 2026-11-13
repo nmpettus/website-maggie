@@ -187,9 +187,9 @@ const Hero = () => {
               <Crown className="h-5 w-5" />
             </div>
             <div className="relative flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-rose/15 px-2 py-0.5">
-                <Sparkles className="h-3 w-3 animate-sparkle text-rose motion-reduce:animate-none" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-rose">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-rose px-2 py-0.5">
+                <Sparkles className="h-3 w-3 animate-sparkle text-background motion-reduce:animate-none" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-background">
                   New Game!
                 </span>
               </span>
